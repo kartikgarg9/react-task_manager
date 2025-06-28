@@ -1,116 +1,113 @@
-Task Manager - React Application
-A clean and functional Task Manager built with React and Tailwind CSS.
-This project allows users to:
+# Task Manager — React + Vite + Tailwind CSS
 
+A simple and elegant task management app built with **React**, **Vite**, and **Tailwind CSS v4**.
 
-Add new tasks with priority and description
+This app lets you:
+-  Add tasks with priority and description
+-  Track progress with visual indicators
+-  Filter tasks (All, Completed, Pending)
+-  Clear all tasks in one click
 
+---
 
-Mark tasks as complete/incomplete
+##  Getting Started
 
+### 1. Clone the repo
 
-Filter tasks based on completion status
+```bash
+git clone <https://github.com/kartikgarg9/react-task_manager.git >
+cd react-task-manager
 
-
-Track task progress visually
-
-
-Clear all tasks
-
-
-
-🚀 Setup Instructions
-1. Clone the Repository
-git clone <your-repo-url>
-cd task-manager
-
-2. Install Dependencies
+2. Install dependencies
+bash
 npm install
 
-3. Start the Development Server
-npm start
+3. Start the dev server
+bash
+npm run dev
+The app will open at http://localhost:5173.
 
-The app will be available at http://localhost:3000.
+ Tailwind CSS (v4) Setup with Vite
+We’re using Tailwind v4 with the official Vite plugin. Here's how it's set up:
+
+1. Install Tailwind & Plugin
+bash
+npm install tailwindcss @tailwindcss/vite
 
 
-🧩 Tailwind CSS Integration
-Tailwind CSS is integrated for utility-first styling.
+2. Update vite.config.js
+js
+// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 
-1. Install Tailwind CSS
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss()
+  ]
+})
 
-2. Configure tailwind.config.js
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
 
-3. Include Tailwind in CSS
-In src/style.css:
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-Remove old styles below if converting fully to Tailwind.
-
+3. Add Tailwind to your CSS
+css
+/* src/style.css */
+@import "tailwindcss";
+That’s it! You’re ready to use all Tailwind utility classes right in your components.
 
 🧪 Unit Testing
-Basic testing is done using React Testing Library and Jest.
+We use Vitest and React Testing Library for testing React components.
 
-1. Install testing libraries
-npm install --save-dev @testing-library/react @testing-library/jest-dom
+Install test dependencies:
+bash
+npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
+Add test config in vite.config.js
+js
+test: {
+  globals: true,
+  environment: 'jsdom',
+}
+Example Test
+js
+import { render, screen } from '@testing-library/react'
+import ProgressTracker from '../components/ProgressTracker'
 
-2. Example Test
-__tests__/ProgressTracker.test.jsx
+test('displays progress correctly', () => {
+  render(<ProgressTracker tasks={[{ completed: true }, { completed: false }]} />)
+  expect(screen.getByText(/1 out of 2 tasks completed/i)).toBeInTheDocument()
+})
+Run tests
 
-import { render, screen } from '@testing-library/react';
-import ProgressTracker from '../components/ProgressTracker';
-
-test('shows correct task completion summary', () => {
-  render(<ProgressTracker tasks={[{ completed: true }, { completed: false }]} />);
-  expect(screen.getByText(/1 out of 2 tasks completed/i)).toBeInTheDocument();
-});
-
-Run Tests
-npm test
-
-
-📁 Project Structure
+npx vitest
+📁 Folder Structure
+css
 src/
 ├── components/
 │   ├── TaskForm.jsx
 │   ├── TaskList.jsx
-│   ├── ProgressTracker.jsx
-├── App.jsx
-├── index.js
-├── style.css
+│   └── ProgressTracker.jsx
 ├── __tests__/
+│   ├── TaskForm.test.jsx
+│   ├── TaskList.test.jsx
 │   └── ProgressTracker.test.jsx
+├── App.jsx
+├── main.jsx
+├── style.css
 
 
-📌 Design Notes
+Design
+Built using Tailwind's utility-first classes
 
-Fully responsive with Tailwind utility classes
+Responsive for mobile & desktop
 
+Smooth transitions, hover effects, and color-coded priorities
 
-Button hover effects and transitions
+License
+Licensed under the MIT License.
 
+Contributing
+Contributions are welcome!
+Feel free to fork this repo and submit a pull request. 💡
 
-Progress bar for visual task tracking
-
-
-Minimal and readable UI
-
-
-
-📃 License
-This project is licensed under the MIT License.
-
-
-🤝 Contributing
-Contributions are welcome! Feel free to fork this repo and submit pull requests.
+Made using React, Vite & Tailwind CSS v4
