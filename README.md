@@ -12,6 +12,8 @@ This app lets you:
 
 ##  Getting Started
 
+
+
 ### 1. Clone the repo
 
 ```bash
@@ -26,6 +28,10 @@ npm install
 bash
 npm run dev
 The app will open at http://localhost:5173.
+
+### Here's the Preview of Our Task Manager
+
+![Homepage Screenshot](screenshots/Homepage.png) 
 
  Tailwind CSS (v4) Setup with Vite
 We’re using Tailwind v4 with the official Vite plugin. Here's how it's set up:
