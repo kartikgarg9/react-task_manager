@@ -34,7 +34,7 @@ function TaskForm({ addTask, setFilter, setSearchQuery }) {
     return (
         <form onSubmit={handleSubmit} className="mb-10 space-y-6">
             {/* Task & Description */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <input
                     type="text"
                     placeholder="Enter your task"
@@ -50,7 +50,15 @@ function TaskForm({ addTask, setFilter, setSearchQuery }) {
                     onChange={(e) => setDescription(e.target.value)}
                     className="px-6 py-4 w-full text-white bg-gray-800 rounded-full shadow-inner border border-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 placeholder-gray-400"
                 />
-
+                <select
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
+                    className="px-4 py-2 text-base border border-gray-500 rounded-md bg-white text-gray-800 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300"
+                >
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
                 <button
                     type="submit"
                     className="flex justify-center items-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold border border-black hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 focus:ring-offset-gray-900 transition"
@@ -88,15 +96,7 @@ function TaskForm({ addTask, setFilter, setSearchQuery }) {
                         <FaSearch className="absolute left-3 top-2.5 text-gray-400" />
                     </div>
 
-                    <select
-                        value={priority}
-                        onChange={(e) => setPriority(e.target.value)}
-                        className="px-4 py-2 text-base border border-gray-500 rounded-md bg-white text-gray-800 focus:border-yellow-400 focus:ring-2 focus:ring-yellow-300"
-                    >
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
+
                 </div>
             </div>
         </form>
